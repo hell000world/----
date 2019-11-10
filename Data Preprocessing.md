@@ -17,9 +17,13 @@
 
 5. Replace missing values with the value before it. This may work if your values seem to have a trend (as opposed to values that are all over the place).
 
-6. Use a k-nearest neighbor or EM algorithm to generate missing data points. Nearest neighbor matching logically matches one data point with another, most similar, data point. The EM algorithm works by choosing random values for the missing data points, and using those guesses to estimate a second set of data. The new values are used to create a better guess for the first set, and the process continues until the algorithm converges on a fixed point.
+6. Use a k-nearest neighbor or EM algorithm to generate missing data points. Nearest neighbor matching logically matches one data point with another, most similar, data point.
+> 也说是热平台插补的一种.
+The EM algorithm works by choosing random values for the missing data points, and using those guesses to estimate a second set of data. The new values are used to create a better guess for the first set, and the process continues until the algorithm converges on a fixed point.
+> EM一个重要前提：适用于大样本。有效样本的数量足够以保证ML估计值是渐近无偏的并服从正态分布。但是这种方法可能会陷入局部极值，收敛速度也不是很快，并且计算很复杂。
 
 Bayesian
+C4.5
 
 **7. Multiple Imputation**
 * Fit your data to an appropriate model. Model fitting takes data from samples and attempts to find the best fit model, like a normal distribution or chi-square distribution. The model could also be some other parametric model gleaned from your data. For the above table, two simple models were created (giving two imputations): nearest neighbor, which took the values for the neighbor above and the neighbor below and nearest neighbor + 25%, which increased the nearest neighbor values to account for nonresponse bias.
